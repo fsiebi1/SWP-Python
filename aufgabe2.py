@@ -4,20 +4,37 @@ from typing import List, Tuple
 
 import numpy as np
 
-MAX = int(3e5)
+MAX = int(10e5)
+PROZENT = MAX // 100
 
-result = {
-    "high-card": 0,
-    "pair": 0,
-    "two-pairs": 0,
-    "tripple": 0,
-    "straight": 0,
-    "flush": 0,
-    "house": 0,
-    "quads": 0,
-    "straight flush": 0,
-    "royal flush": 0,
+REAL = {
+    "high-card": 50.1177,
+    "pair": 42.22569,
+    "two-pairs": 4.7539,
+    "tripple": 2.21128,
+    "straight": 0.3925,
+    "flush": 0.1965,
+    "house": 0.1441,
+    "quads": 0.024,
+    "straight flush": 0.0014,
+    "royal flush": 0.0002,
 }
+
+
+def make_dict():
+    result = {
+        "high-card": 0,
+        "pair": 0,
+        "two-pairs": 0,
+        "tripple": 0,
+        "straight": 0,
+        "flush": 0,
+        "house": 0,
+        "quads": 0,
+        "straight flush": 0,
+        "royal flush": 0,
+    }
+    return result
 
 
 def get_lotto(anz: int) -> List[int]:
@@ -80,50 +97,48 @@ def check(cards: List[Tuple[int, int]]):
     color = get_anz_same(cards, 1)
 
     if number == 4:
-        result["quads"] += 1
-        return
+        return "quads"
 
     straight = check_straight_double(cards)
     if color == 5 and straight:
         if cards[4][0] == 13:
-            result["royal flush"] += 1
-            return
-        result["straight flush"] += 1
-        return
+            return "royal flush"
+        return "straight flush"
 
     if color == 5:
-        result["flush"] += 1
-        return
+        return "flush"
 
     if straight:
-        result["straight"] += 1
-        return
+        return "straight"
 
     anz_z = anz_zahlen(cards)
     if anz_z == 2:
-        result["house"] += 1
-        return
+        return "house"
 
     if number == 3:
-        result["tripple"] += 1
-        return
+        return "tripple"
 
     if anz_z == 3:
-        result["two-pairs"] += 1
-        return
+        return "two-pairs"
 
     if number == 2:
-        result["pair"] += 1
-        return
+        return "pair"
 
-    result["high-card"] += 1
+    return "high-card"
 
 
-if __name__ == "__main__":
+def _main():
+    result = make_dict()
+
     for x in range(MAX):
         arr = get_lotto(5)
         numbers = make_cards(arr)
-        check(numbers)
+        what = check(numbers)
+        result[what] += 1
 
     for k in result.keys():
-        print(f"{k:14}: {result[k]:6}")
+        print(f"{k:14}: {result[k] / PROZENT:8.5f} %\t{REAL[k]:8.5f} %")
+
+
+if __name__ == "__main__":
+    _main()

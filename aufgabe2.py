@@ -1,8 +1,10 @@
+#%%
 import random
 from typing import List, Tuple
+
 import numpy as np
 
-MAX = int(1e5)
+MAX = int(3e5)
 
 result = {
     "high-card": 0,
@@ -123,4 +125,5 @@ if __name__ == "__main__":
         numbers = make_cards(arr)
         check(numbers)
 
-    print(result)
+    for k in result.keys():
+        print(f"{k:14}: {result[k]:6}")

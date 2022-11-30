@@ -4,7 +4,7 @@ from typing import List, Tuple
 
 import numpy as np
 
-MAX = int(10e5)
+MAX = int(1e6)
 PROZENT = MAX // 100
 
 REAL = {
@@ -136,8 +136,10 @@ def _main():
         what = check(numbers)
         result[what] += 1
 
+    print("\t\tSelbst:\t\tWiki:")
+
     for k in result.keys():
-        print(f"{k:14}: {result[k] / PROZENT:8.5f} %\t{REAL[k]:8.5f} %")
+        print(f"{k:15}: {result[k] / PROZENT:6.3f} %\t {REAL[k]:6.3f} %")
 
 
 if __name__ == "__main__":

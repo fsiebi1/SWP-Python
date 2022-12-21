@@ -1,15 +1,11 @@
 #%%
-# TODO: berechnung für bestes sign
 
-# client-server-cummunication:
-# create, put, add, init, delete
-
-from db import create_ifn_exist, add_value, get_stats, init_db, use_DSGVO
 from tools import Sign
 import sys
 import random
 import matplotlib.pyplot as plt
 import numpy as np
+from api_client import get_stats, create_ifn_exist, add_value, use_DSGVO
 
 
 def get_name_mode():
@@ -21,6 +17,7 @@ def get_name_mode():
     if name == "default":
         print("You can't use this name!")
         sys.exit()
+
     if create_ifn_exist(name):
         print(f"Hello {name}, nice to meet you!")
     else:
@@ -102,8 +99,9 @@ def get_player_sign(player_name: str, again: bool = False) -> Sign:
     return sign
 
 
-def save_result(player_name: str, player_sign: Sign):
+def save_result(player_name: str, player_sign: Sign, comp_sign: Sign):
     add_value(player_name, player_sign)
+    add_value("default", comp_sign)
 
 
 def print_won(player_name: str, won: int):
@@ -124,8 +122,7 @@ def play(stats: dict):
     stats[player_sign.name.lower()] += 1
 
     won = check_won(player_sign, comp_sign, stats["game"])
-    save_result(stats["name"], player_sign)
-    save_result("default", comp_sign)
+    save_result(stats["name"], player_sign, comp_sign)
     print_won(stats["name"], won)
 
     play(stats)
@@ -194,7 +191,6 @@ def menue(stats: dict):
 
 
 def _main():
-    init_db()
     stats = get_name_mode()
     menue(stats)
 

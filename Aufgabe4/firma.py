@@ -6,6 +6,7 @@ from typing import List
 class Gender(Enum):
     Male = 0
     Female = 1
+    notSpecified = 2
 
 
 class Position(Enum):
@@ -89,7 +90,7 @@ def _main():
 
     print(f"Es gibt {get_anz_abteilungen()} Abteilungen")
 
-    print(f"Die größte Mitarbeiterstärke ist die Abteilung '{f.get_biggest_branch()}'")
+    print(f"Die mitarbeiterstärkste Abteilung ist '{f.get_biggest_branch()}'")
 
     print(f"{f.get_percent(Gender.Male):04.2f}% der Mitarbeiter sind männlich.")
     print(f"{f.get_percent(Gender.Female):04.2f}% der Mitarbeiter sind weiblich.")

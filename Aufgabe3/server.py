@@ -166,10 +166,7 @@ def create_chart(stat: json, path=""):
     labels = ["Rock", "Paper", "Scissors", "Spock", "Lizard"]
     plt.pie(data, labels=labels)
 
-    if path == "":
-        plt.show()
-    else:
-        plt.savefig(path)
+    plt.savefig(path)
 
 
 def _main():

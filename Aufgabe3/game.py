@@ -14,7 +14,7 @@ def get_name_mode():
     print("Okay then.\n")
 
     name = input("Please give me your name, so I don't have to call you 'Player': ")
-    if name == "default":
+    if name == "default" or name.strip() == "":
         print("You can't use this name!")
         sys.exit()
 
@@ -37,7 +37,6 @@ def get_name_mode():
 def check_won(
     player: Sign, comp: Sign, game: list
 ) -> int:  # 1 player won, 0 tie, -1 comp won
-    print(f"Computer played: {comp.name}")
     result = -1
     if player == comp:
         result = 0
@@ -123,6 +122,7 @@ def play(stats: dict):
 
     won = check_won(player_sign, comp_sign, stats["game"])
     save_result(stats["name"], player_sign, comp_sign)
+    print(f"Computer played: {comp_sign.name}")
     print_won(stats["name"], won)
 
     play(stats)

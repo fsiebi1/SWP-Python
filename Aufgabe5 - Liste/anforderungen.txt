@@ -1,0 +1,33 @@
+append
+append_all
+insert_after
+	was passiert, wenn prev_obj nicht existiert?
+insert_at
+	was passiert, wenn index  == size() oder noch größer, wenn index == 0
+pop
+	was passiert, wenn size() == 0 oder size() == 1?
+delete_obj
+	was passiert, wenn obj nicht existiert?
+delete_at
+	was passiert, wenn index out of range
+get
+	was passiert, wenn index out of range
+find
+	was passiert, wenn obj nicht existiert
+get_first
+	was passiert, size == 0
+get_last
+	was passiert, wenn size() == 0 oder size() == 1?
+to_list
+	was passiert, wenn size == 0
+size
+	was passiert, bei länge 0
+__iter__ 		for i in self
+__getitem__ 	self[i]
+__str__
+    bei laenge 0, 1 und mehr
+copy
+reverse
+sort
+shuffle
+sublist

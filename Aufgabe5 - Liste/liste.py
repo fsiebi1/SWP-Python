@@ -1,4 +1,5 @@
 import random
+from typing import List
 
 
 class ListItem:
@@ -23,8 +24,9 @@ class ListItem:
 
 
 class ChainedList:
-    def __init__(self):
+    def __init__(self, objs: List[int] = []):
         self.head = ListItem("head")
+        self.append_all(objs)
 
     def append(self, obj: int):
         new_item = ListItem(obj)
@@ -138,6 +140,12 @@ class ChainedList:
         if len(string) > 1:
             string = string[:-2]
         return string + "]"
+
+    def __len__(self) -> int:
+        return self.size()
+
+    def __repr__(self) -> str:
+        return f"ChainedList({str(self)})"
 
     def copy(self) -> "ChainedList":
         cop = ChainedList()
@@ -270,6 +278,9 @@ def test_chained_list():
     subl.unique()
     print("\nUnique items: ")
     print(subl)
+
+    print("\nRepr:")
+    print(subl.__repr__())
 
 
 if __name__ == "__main__":

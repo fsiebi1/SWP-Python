@@ -186,6 +186,12 @@ class ChainedList:
 
         return cop
 
+    def unique(self):
+        uni = ChainedList()
+        temp = {x for x in self.to_list()}
+        uni.append_all(temp)
+        self.head = uni.head
+
 
 class ChainedListIter:
     def __init__(self, chained_list: ChainedList):
@@ -210,7 +216,7 @@ def test_chained_list():
     print("\nAppend 4:")
     print(clist)
 
-    a = [7, 2, 5, 0, 1, 9]
+    a = [7, 2, 5, 0, 1, 2, 9]
     clist.append_all(a)
     print("\nAppend list [7, 2, 5, 0, 1, 9]:")
     print(clist)
@@ -257,8 +263,12 @@ def test_chained_list():
     cop.sort()
     print(f"Sort: \t\t{cop}")
 
-    subl = clist.sublist(1, 5)
+    subl = cop.sublist(1, 5)
     print("\nSublist from 1 to 5:")
+    print(subl)
+
+    subl.unique()
+    print("\nUnique items: ")
     print(subl)
 
 

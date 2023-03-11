@@ -1,0 +1,21 @@
+		                        Worst case				Averrage case			Best case				
+		                Single	Double	Array	Single	Double	Array	Single	Double	Array
+append		            n		1		n		n		1		1		n		1		1
+append_list		        n + m	m		n + m	n + m	m		m		n + m	m		m
+append_front		    1		1		n		1		1		n		1		1		n
+append_front_list		m		m		n + m	m		m		n + m	m		m		nm
+insert_after		    n		n		n		n		n		n		1		1		1
+insert_at		        n		n		n		n		n		n		1		1		1
+remove		            n		n		n		n		n		n		1		1		1
+remove_at		        n		n		n		n		n		n		1		1		1
+find		            n		n		n		n		n		n		1		1		1
+get		                n		n		1		n		n		1		1		1		1
+get_first		        1		1		1		1		1		1		1		1		1
+get_last		        n		1		1		n		1		1		n		1		1
+set		                n		n		1		n		n		1		1		1		1
+size		            n		n		1		n		n		1		n		n		1
+copy		            n		n		n		n		n		n		n		n		n
+reverse		            n		n		n		n		n		n		n		n		n
+sort		            n * lg  n * lg  n * lg  n * lg  n * lg  n * lg  n * lg  n * lg  n * lg
+sublist		            n		n		n		n		n		n		n		n		n
+shuffle		            ?		?		?		?		?		?		?		?		?
